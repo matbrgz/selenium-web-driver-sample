@@ -8,17 +8,18 @@ public class Main {
         String link="https://docs.google.com/forms/d/e/1FAIpQLSdQ39QKafKQtBnnKpkozSABVgnNO3ix_-bzdKqsm6-irWzZUQ/viewform";
         String parms = "?entry.1770752172=DJ%20Lessa%20(FUNK)&entry.295136228=Hyper";
         String linkfinal = link.concat(parms);
+        while (true) {
+            Thread.sleep(180000);
+            WebDriverManager.chromedriver().setup();
+            ChromeDriver driver = new ChromeDriver();
 
+            GoogleForms forms = new GoogleForms(driver);
 
-        WebDriverManager.chromedriver().setup();
-        ChromeDriver driver = new ChromeDriver();
-
-        GoogleForms forms = new GoogleForms(driver);
-
-        forms.abrirForms(linkfinal);
-        forms.preencherEmail("fernado.lopes@gmail.com");
-        forms.submmit();
-        forms.printarTitulo();
-        driver.quit();
+            forms.abrirForms(linkfinal);
+            forms.preencherEmail("mat.brgz@gmail.com");
+            forms.submmit();
+            forms.printarTitulo();
+            driver.quit();
+        }
     }
 }
